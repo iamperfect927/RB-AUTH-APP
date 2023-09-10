@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 //COMPONENTS
 import { RegisterComponent } from './components/register/register.component';
@@ -15,6 +19,7 @@ import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-dele
 
 //MATERIAL MODULE
 import { MaterialModule } from 'src/material-module';
+import { HeeaderComponent } from './components/heeader/heeader.component';
 
 
 
@@ -33,7 +38,8 @@ import { MaterialModule } from 'src/material-module';
     UserListingComponent,
     UpdatePopupComponent,
     ForgotPasswordComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    HeeaderComponent
     
       
   ],
@@ -41,11 +47,13 @@ import { MaterialModule } from 'src/material-module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule,
     
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

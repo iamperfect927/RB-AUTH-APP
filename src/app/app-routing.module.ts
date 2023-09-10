@@ -7,7 +7,7 @@ import { UserListingComponent } from './components/user-listing/user-listing.com
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
   const routes: Routes = [
-    { path: '/', component: HomeComponent},
+    { path: '', component: HomeComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'login', component: LoginComponent},
     { path: 'user', component: UserListingComponent},
@@ -15,7 +15,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
   ]
 
 @NgModule({
-  imports: [],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

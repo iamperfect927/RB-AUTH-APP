@@ -1,1 +1,63 @@
-<p>register works!</p>
+<mat-card>
+        <!-- <mat-card-header>
+            <h1>Employee Form</h1>
+        </mat-card-header> -->
+        <mat-card-content class="card">
+            <h1>Register Form</h1>
+            <form [formGroup]="registerForm" (ngSubmit)="proceedRegister()" >
+                <div>
+                    <mat-form-field  class="input">
+                        <mat-label>First name</mat-label>
+                        <input matInput type="text" placeholder="Ex. tom"  formControlName="firstName" required>
+                    </mat-form-field>
+                    <mat-form-field  class="input">
+                        <mat-label>Last name</mat-label>
+                        <input matInput type="text" placeholder="Ex. parfait"  formControlName="lastName" required>
+                    </mat-form-field>
+                    <mat-form-field  class="input">
+                        <mat-label>User name</mat-label>
+                        <input matInput type="text" placeholder="Ex. iamperfect"  formControlName="username" required>
+                    </mat-form-field>
+
+                
+                    <mat-form-field  class="input" >
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" placeholder="Ex. test@gmail.com"  formControlName="email" [email]="true" required >
+                        
+                    </mat-form-field>
+                    <mat-form-field  class="input" >
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dob" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                        <mat-datepicker #picker startView="year" max="endDate"></mat-datepicker>
+                    </mat-form-field>
+                 
+                    <mat-radio-group  class="input" aria-label="Select an option" formControlName="gender">
+                        <mat-label><b>Gender</b></mat-label>
+                        <mat-radio-button type="radio" value="male" name="radio">Male</mat-radio-button>
+                        <mat-radio-button type="radio" value="female" name="radio">Female</mat-radio-button>
+                        <mat-radio-button type="radio" value="others" name="radio">Others</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-form-field  class="input">
+                        <mat-label>Phone</mat-label>
+                        <input matInput type="number" placeholder="Ex. 6xxxxxxx"  formControlName="phone"  required > 
+                    </mat-form-field>
+                
+                    <mat-form-field  class="input">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Ex. 6xxxxxxx"  formControlName="password">
+                        <mat-hint>at least one number, one lowercase and one uppercase letter, at least six characters that are letters, numbers or the underscore</mat-hint>
+                    </mat-form-field>
+                </div>
+                
+                    <div class="register-btns">
+                        <button mat-raised-button color="primary">Submit</button>
+                        <a routerLink="/login" mat-raised-button color="accent">Back to Login</a>
+                    </div>
+            </form>
+
+            
+        </mat-card-content> 
+</mat-card>

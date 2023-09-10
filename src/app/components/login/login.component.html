@@ -1,1 +1,30 @@
-<p>login works!</p>
+<mat-card class="head">
+    <!-- <mat-card-header>
+        <h1>Employee Form</h1>
+    </mat-card-header> -->
+    <mat-card-content class="card">
+        <h1>Login Form</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="proceedLogin()" >
+            <div>
+                
+                <mat-form-field  class="input">
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text" placeholder="Ex. iamperfect"  formControlName="username" required>
+                </mat-form-field>
+            
+                <mat-form-field  class="input">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Ex. 6xxxxxxx"  formControlName="password">
+                    
+                </mat-form-field>
+            </div>
+            
+                <div class="register-btns">
+                    <button mat-raised-button color="primary">Signin</button>
+                    
+                </div>
+        </form>
+
+        
+    </mat-card-content> 
+</mat-card>

@@ -1,7 +1,40 @@
 {
   "user": [
     {
-      
+      "firstName": "djiela",
+      "lastName": "parfait",
+      "username": "admin",
+      "phone": 673211500,
+      "email": "admin@gmail.com",
+      "dob": "2000-03-16T23:00:00.000Z",
+      "gender": "male",
+      "role": "admin",
+      "isActive": true,
+      "password": "admin",
+      "id": 1
+    },
+    {
+      "firstName": "tom",
+      "lastName": "ayuk",
+      "username": "guest",
+      "phone": 652768274,
+      "email": "guest@gmail.com",
+      "dob": "2000-03-01T23:00:00.000Z",
+      "gender": "male",
+      "role": "",
+      "isActive": false,
+      "password": "guest",
+      "id": 2
     }
-  ]
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
