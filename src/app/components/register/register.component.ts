@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
 
 //SERVICES
-// import { ToastrService } from "ngx-toastr"
 import { AuthService } from 'src/app/service/auth.service';
 import { CoreService } from 'src/app/core/core.service';
 
@@ -12,11 +10,14 @@ import { CoreService } from 'src/app/core/core.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styles: [`
-    .card{
+    .head{
       width: 40%;
       border: 2px solid blue;
       border-radius: 10px;
-      margin: auto
+      margin: 40px auto;
+    }
+    .card{
+      
     }
     .input{
       display: block;
@@ -53,28 +54,10 @@ export class RegisterComponent implements OnInit {
       gender: new FormControl('', Validators.required),
       role: new FormControl(''),
       isActive: new FormControl(false),
-      // at least one number, one lowercase and one uppercase letter
-      // at least six characters that are letters, numbers or the underscore
       password: new FormControl('', [Validators.required]),
 
     });
   }
-
-
-
-  // proceedRegister(){
-  //   if (this.registerForm.valid){
-  //     console.log(this.registerForm.value)
-  //     this._service.ProceedRegister(this.registerForm.value).subscribe(
-  //       res => {
-  //         this.coreService.openSnackBar('account created please contact admin to grant access at (+237 652768274)', 'done');
-  //         this._router.navigate(['login'])
-  //       }
-  //     )
-  //   } else{
-  //     this.coreService.openSnackBar('please enter all fields correctly', 'ok');
-  //   }
-  // }
 
   proceedRegister() {
     // Check if the register form is valid

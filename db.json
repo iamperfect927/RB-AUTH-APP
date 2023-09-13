@@ -25,16 +25,32 @@
       "isActive": false,
       "password": "guest",
       "id": 2
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "firstName": "james",
+      "lastName": "buea",
+      "username": "james_buea",
+      "phone": 678849399,
+      "email": "james@gmail.com",
+      "dob": "1989-12-03T23:00:00.000Z",
+      "gender": "female",
+      "role": "",
+      "isActive": false,
+      "password": "james",
+      "id": 3
+    },
+    {
+      "firstName": "vanessa",
+      "lastName": "queen",
+      "username": "vanessaqueen",
+      "phone": 678849399,
+      "email": "queen@gmail.com",
+      "dob": "1989-12-03T23:00:00.000Z",
+      "gender": "female",
+      "role": "",
+      "isActive": false,
+      "password": "queen",
+      "id": 4
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

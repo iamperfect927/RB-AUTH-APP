@@ -15,8 +15,8 @@ export class AuthService {
     return this._http.get(this.apiurl);
   }
 
-  GetbyCode(code: any){
-    return this._http.get(this.apiurl + '/' + code);
+  GetbyCode(){
+    return this._http.get(this.apiurl);
   }
 
   ProceedRegister(inputdata: any): Observable<any>{
@@ -25,5 +25,13 @@ export class AuthService {
 
   UpdateUser(code: any, inputdata: any){
     return this._http.put(this.apiurl + '/' + code, inputdata);
+  }
+
+  IsLoggedIn(){
+    return sessionStorage.getItem("username") != null;
+  }
+
+  GetUserRole(){
+    return sessionStorage.getItem("userrole") != null ? sessionStorage.getItem('userrole')?.toString() : '';
   }
 }

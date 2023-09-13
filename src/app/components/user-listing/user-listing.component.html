@@ -1,1 +1,86 @@
-<p>user-listing works!</p>
+<div class="main-body">
+    <mat-form-field style="margin-top: 20px; width: 100%;">
+          <mat-label>Filter</mat-label>
+          <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+  
+      <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" mat-sort>
+  
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef >ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef > First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef > Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef > Username </th>
+            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+          </ng-container>
+  
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef > Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef > Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="dob">
+          <th mat-header-cell *matHeaderCellDef > DOB </th>
+          <td mat-cell *matCellDef="let element"> {{element.dob | date}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef > Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef > Role </th>
+          <td mat-cell *matCellDef="let element"> {{element.role? 'admin': 'guest'}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef > Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.isActive? 'Active User': 'Inactive User'}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef > Action </th>
+          <td mat-cell *matCellDef="let element" > 
+            <a  style="margin: 5px;"><button mat-raised-button color="primary" (click)=updateUser(element.id)>Update</button></a>
+              
+            <a ><button mat-raised-button color="accent" (click)=updateUser(element.id)>Details</button></a> </td>
+  
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+        <!-- when we have no filterable list -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+      </mat-paginator>
+  
+    </div>
+  </div>

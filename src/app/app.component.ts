@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -8,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent   {
+export class AppComponent implements DoCheck  {
 
+  ismenurequired = false
+  constructor(
+    private _router: Router,
+  ){}
+
+  ngDoCheck(): void {
+    let currenturl = this._router.url;
+    if (currenturl=="/login" || currenturl=="/register"){
+      this.ismenurequired = false;
+    }else {
+      this.ismenurequired = true;
+    }
+  }
   
 }

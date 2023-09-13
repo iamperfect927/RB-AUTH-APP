@@ -5,8 +5,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserListingComponent } from './components/user-listing/user-listing.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AuthGuard } from './guard/auth.guard';
 
   const routes: Routes = [
+    // AUTH GUARD CHECKS SESSION STORAGE TO SEE IF A USER IS LOGGED IN OR NOT(REDIRECTS BACK TO THE LOGIN PAGE) , canActivate:[AuthGuard]
     { path: '', component: HomeComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'login', component: LoginComponent},

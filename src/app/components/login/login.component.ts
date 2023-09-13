@@ -1,22 +1,25 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
 
 //SERVICES
-// import { ToastrService } from "ngx-toastr"
 import { AuthService } from 'src/app/service/auth.service';
 import { CoreService } from 'src/app/core/core.service';
+
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styles: [`
-  .card{
+  .head{
     width: 40%;
     border: 2px solid blue;
     border-radius: 10px;
-    margin: auto;
+    margin: 120px auto;
+  }
+  .card{
+    
   }
   .input{
     display: block;
@@ -28,57 +31,91 @@ import { CoreService } from 'src/app/core/core.service';
   ]
 })
 export class LoginComponent implements OnInit {
+
   loginForm!: FormGroup;
   userdata: any;
   result: any;
+
   constructor(
     private _builder: FormBuilder,
     private _service: AuthService,
     private _router: Router,
     private coreService: CoreService,
+    private http: HttpClient,
   ) {
     // sessionStorage.clear();
+    
   }
 
   ngOnInit(): void {
     this.loginForm = this._builder.group({
-      username: new FormControl('admin', Validators.required),
+      id: new FormControl('1'),
+      phone: new FormControl('652768274'),
+      username: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required]),
-    });    
+    });
+
+    sessionStorage.setItem('name', 'djiela' )
   }
 
-  proceedLogin(){
+  proceedLogin() {
+
+    // LOGIN VALIDATION, SETSESSION STORAGE AND REDIRECTION TO HOME PAGE
+
     if (this.loginForm.valid) {
-      this._service.GetbyCode(this.loginForm.value.username).subscribe({
+      this._service.GetbyCode().subscribe({
         next: (res: any) => {
-          this.userdata = res;
-          console.log(this.userdata);
+          const user = res.find((a: any) => {
+            return (a.username === this.loginForm.value.username && a.password === this.loginForm.value.password);
+          });
+          // CHECKING THE IF IT'S THE USER
+          if (user) {
+            // console.log('match');
+            // CHECKING IF USER IS ACTIVE
+            if (user.isActive){
+              // sessionStorage.setItem('username', user.username);
+              // sessionStorage.setItem('userrole', user.role);
+              this._router.navigate(['']);
+              this.loginForm.reset();
+            } else {
+              this.coreService.openSnackBar('Inactive user please contact support', 'error');
+              this.loginForm.reset();
+            }
+          } else {
+            // console.log('no match');
+            this.coreService.openSnackBar('incorrect username or password', 'error');
+            this.loginForm.reset();
+          }
         },
         error: (err: any) => {
           console.log(err);
+          this.coreService.openSnackBar('invalid creedentials', 'error');
         }
       })
+    } else {
+      console.log('login form is not valid');
     }
+
+
+    // HELPED ME SOLVE MY GET REQUEST PROBLEM
+    // this.http.get<any>('http://localhost:3000/user').subscribe({
+    //   next: (res: any) => {
+    //     const user = res.find((a:any) => {
+    //       return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password;
+    //     })
+
+    //     if (user){
+    //       console.log('match');
+    //       this._router.navigate(['']);
+    //     }else{
+    //       console.log('no match');
+    //       location.reload();
+    //     }
+    //   },
+    //   error: (err: any) => {
+    //     console.log(err);
+    //   },
+    // })
   }
 
-  // proceedLogin() {
-  //   if (this.loginForm.valid) {
-  //     this._service.GetbyCode(this.loginForm.value.id).subscribe(item => {
-  //       this.result = item;
-  //       if (this.result.password === this.loginForm.value.password) {
-  //         if (this.result.isactive) {
-  //           sessionStorage.setItem('username',this.result.id);
-  //           sessionStorage.setItem('role',this.result.role);
-  //           this._router.navigate(['']);
-  //         } else {
-  //           this.coreService.openSnackBar('inactive user, please contact admin', 'ok');
-  //         }
-  //       } else {
-  //         this.coreService.openSnackBar('invalid creedentials', 'error');
-  //       }
-  //     });
-  //   } else {
-  //     this.coreService.openSnackBar('please enter valid data', 'error');
-  //   }
-  // }
 }

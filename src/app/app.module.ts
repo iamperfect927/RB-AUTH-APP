@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 
+// SESSION STORAGE
+// import { SessionStorageModule } from '@angular/platform-browser/sessionstorage';
 
 //COMPONENTS
 import { RegisterComponent } from './components/register/register.component';
@@ -19,7 +20,8 @@ import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-dele
 
 //MATERIAL MODULE
 import { MaterialModule } from 'src/material-module';
-import { HeeaderComponent } from './components/heeader/heeader.component';
+import { HeaderComponent } from './components/header/header.component';
+import { UpdateRoleComponent } from './components/update-role/update-role.component';
 
 
 
@@ -39,7 +41,8 @@ import { HeeaderComponent } from './components/heeader/heeader.component';
     UpdatePopupComponent,
     ForgotPasswordComponent,
     ConfirmDeleteComponent,
-    HeeaderComponent
+    HeaderComponent,
+    UpdateRoleComponent,
     
       
   ],
@@ -50,7 +53,7 @@ import { HeeaderComponent } from './components/heeader/heeader.component';
     MaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule,
+    // SessionStorageModule,
     
   ],
   providers: [ ],
