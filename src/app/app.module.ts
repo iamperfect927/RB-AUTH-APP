@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // SESSION STORAGE
 // import { SessionStorageModule } from '@angular/platform-browser/sessionstorage';
+// import { LocalStorageModule } from '@angular/platform-browser/localstorage';
 
 //COMPONENTS
 import { RegisterComponent } from './components/register/register.component';

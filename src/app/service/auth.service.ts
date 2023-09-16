@@ -15,8 +15,12 @@ export class AuthService {
     return this._http.get(this.apiurl);
   }
 
-  GetbyCode(){
-    return this._http.get(this.apiurl);
+  UpdateEmployee(id: number, data: any): Observable<any>{
+    return this._http.put(`http://localhost:3000/user/${id}`, data);
+ }
+
+  GetAllRole(){
+    return this._http.get('http://localhost:3000/role');
   }
 
   ProceedRegister(inputdata: any): Observable<any>{
@@ -27,9 +31,10 @@ export class AuthService {
     return this._http.put(this.apiurl + '/' + code, inputdata);
   }
 
-  IsLoggedIn(){
-    return sessionStorage.getItem("username") != null;
-  }
+  // MOVED TO GUARD PAGE
+  // IsLoggedIn(){
+  //   return sessionStorage.getItem("username") != null;
+  // }
 
   GetUserRole(){
     return sessionStorage.getItem("userrole") != null ? sessionStorage.getItem('userrole')?.toString() : '';

@@ -1,36 +1,26 @@
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-// import { Router } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
+import { Inject } from '@angular/core';
 
 //SERVICES
-import { AuthService } from 'src/app/service/auth.service';
+// import { AuthService } from 'src/app/service/auth.service';
 import { CoreService } from 'src/app/core/core.service';
 
-
-
-export class AuthGuard implements CanActivate{
-
-  constructor(
-    public _service: AuthService,
-    public _router: Router,
-    public coreService: CoreService,
-  ){}
-
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-      if (this._service.IsLoggedIn()) {
-        return true;
-      } else {
-        this._router.navigate(['login']);
-        return false;
-      } 
-    }
+ function IsLoggedIn(){
+  return sessionStorage.getItem("username") != null;
+  // console.log('lol')
 }
 
-// export const authGuard: CanActivateFn = (route, state) => {
-//   return true
-  
-
-// };
+export const authGuard: CanActivateFn = (route, state) => {
+  const coreService = Inject(CoreService);
+  const router = Inject(Router);
+      if (IsLoggedIn()) {
+        return true;
+      } else {
+        // router.navigate(['login']);
+        // coreService.openSnackBar('access denied', 'error');
+        console.log('error');
+        return false;
+      }
+};
 
 

@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
     private coreService: CoreService,
     private http: HttpClient,
   ) {
-    // sessionStorage.clear();
+    sessionStorage.clear();
+    // localStorage.clear();
     
   }
 
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
     });
 
-    sessionStorage.setItem('name', 'djiela' )
+    
   }
 
   proceedLogin() {
@@ -63,18 +64,18 @@ export class LoginComponent implements OnInit {
     // LOGIN VALIDATION, SETSESSION STORAGE AND REDIRECTION TO HOME PAGE
 
     if (this.loginForm.valid) {
-      this._service.GetbyCode().subscribe({
+      this._service.GetAll().subscribe({
         next: (res: any) => {
           const user = res.find((a: any) => {
             return (a.username === this.loginForm.value.username && a.password === this.loginForm.value.password);
           });
           // CHECKING THE IF IT'S THE USER
           if (user) {
-            // console.log('match');
             // CHECKING IF USER IS ACTIVE
             if (user.isActive){
-              // sessionStorage.setItem('username', user.username);
-              // sessionStorage.setItem('userrole', user.role);
+              // console.log(user.username, user.role);
+              sessionStorage.setItem('username', (user.username));
+              sessionStorage.setItem('userrole', user.role); 
               this._router.navigate(['']);
               this.loginForm.reset();
             } else {
@@ -82,7 +83,6 @@ export class LoginComponent implements OnInit {
               this.loginForm.reset();
             }
           } else {
-            // console.log('no match');
             this.coreService.openSnackBar('incorrect username or password', 'error');
             this.loginForm.reset();
           }

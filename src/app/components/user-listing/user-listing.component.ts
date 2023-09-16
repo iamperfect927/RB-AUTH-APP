@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { CoreService } from 'src/app/core/core.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdatePopupComponent } from '../update-popup/update-popup.component';
+import { UpdateRoleComponent } from '../update-role/update-role.component';
 
 @Component({
   selector: 'app-user-listing',
@@ -62,14 +63,15 @@ export class UserListingComponent implements OnInit {
       }
     });
   }
-  updateUser(id: any) { 
+  updateUser(data: any) { 
     this._dialog.open(UpdatePopupComponent, {
-      enterAnimationDuration: '1000ms',
+      enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
-      width: '50%',
-      data:{
-        userdata: id
-      }
+      width: '30%',
+      // data:{
+      //   userdata: id
+      // }
+      data: data
     })
   }
 
