@@ -4,7 +4,7 @@
     <span class="example-spacer"></span>
     <div>
       <a [routerLink]="['']">Home</a>
-      <a [routerLink]="['user']" class="user-link">Users</a>
+      <a *ngIf="isadminuser" [routerLink]="['user']" class="user-link">Users</a>
       <a [routerLink]="['login']" class="user-link">Logout</a>
       <!-- <a [routerLink]="['register']" class="user-link">Register</a> -->
     </div>

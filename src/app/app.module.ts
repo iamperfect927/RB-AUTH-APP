@@ -23,7 +23,7 @@ import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-dele
 import { MaterialModule } from 'src/material-module';
 import { HeaderComponent } from './components/header/header.component';
 import { UpdateRoleComponent } from './components/update-role/update-role.component';
-
+import { CoreService } from './core/core.service';
 
 
 
@@ -57,7 +57,7 @@ import { UpdateRoleComponent } from './components/update-role/update-role.compon
     // SessionStorageModule,
     
   ],
-  providers: [ ],
+  providers: [CoreService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

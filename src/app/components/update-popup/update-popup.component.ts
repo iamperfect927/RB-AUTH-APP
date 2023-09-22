@@ -50,18 +50,18 @@ export class UpdatePopupComponent implements OnInit {
     this.loaduserdata();
   }
 
-  // rolelist: any;
+  rolelist: any;
   // editdata: any;
 
   ngOnInit(): void {
-    // this._service.GetAllRole().subscribe({
-    //   next: (res: any) => {
-    //     this.rolelist = res;
-    //   },
-    //   error: (err: any) => {
-    //     console.log(err);
-    //   }
-    // })
+    this._service.GetAllRole().subscribe({
+      next: (res: any) => {
+        this.rolelist = res;
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
 
     this.updateForm.patchValue(this.data);
     console.log(this.data)
@@ -86,7 +86,6 @@ export class UpdatePopupComponent implements OnInit {
         isActive: this.data.isActive,
         password: this.data.password
       });
-      // this._service.UpdateEmployee(this.data.id,this.updateForm.value).subscribe({})
     }
   }
 

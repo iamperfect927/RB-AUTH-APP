@@ -9,10 +9,13 @@ import { authGuard } from './guard/auth.guard';
 
   const routes: Routes = [
     // AUTH GUARD CHECKS SESSION STORAGE TO SEE IF A USER IS LOGGED IN OR NOT(REDIRECTS BACK TO THE LOGIN PAGE) , canActivate:[authGuard]
+    
     { path: '', component: HomeComponent, canActivate:[authGuard]},
+    { path: 'user', component: UserListingComponent, canActivate:[authGuard]},
     { path: 'register', component: RegisterComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'user', component: UserListingComponent, canActivate:[authGuard]},
+    // { path: '', component: HomeComponent, canActivate:[authGuard]},
+    // { path: 'user', component: UserListingComponent, canActivate:[authGuard]},
     { path: 'forgot-password', component: ForgotPasswordComponent},
   ]
 

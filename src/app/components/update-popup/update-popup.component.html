@@ -5,9 +5,9 @@
                 <mat-label>Role</mat-label>
                 <mat-select formControlName="role">
                     <mat-option value="">Select role</mat-option>
-                    <!-- <mat-option *ngFor="let item of rolelist" value="item.code">{{item.name}}</mat-option> -->
-                    <mat-option value="staff">staff</mat-option>
-                    <mat-option value="guest">guest</mat-option>
+                    <mat-option *ngFor="let item of rolelist" value="item.code">{{item.name}}</mat-option>
+                    <!-- <mat-option value="staff">staff</mat-option>
+                    <mat-option value="guest">guest</mat-option> -->
                 </mat-select>
             </mat-form-field>
             <section class="example-section" >

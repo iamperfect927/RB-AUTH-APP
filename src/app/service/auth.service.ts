@@ -32,9 +32,9 @@ export class AuthService {
   }
 
   // MOVED TO GUARD PAGE
-  // IsLoggedIn(){
-  //   return sessionStorage.getItem("username") != null;
-  // }
+  IsLoggedIn(){
+    return sessionStorage.getItem("username") != null;
+  }
 
   GetUserRole(){
     return sessionStorage.getItem("userrole") != null ? sessionStorage.getItem('userrole')?.toString() : '';

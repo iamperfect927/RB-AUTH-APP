@@ -22,7 +22,7 @@
       "dob": "1989-12-03T23:00:00.000Z",
       "gender": "female",
       "role": "guest",
-      "isActive": true,
+      "isActive": false,
       "password": "james",
       "id": 2
     },
@@ -35,7 +35,7 @@
       "dob": "1989-12-03T23:00:00.000Z",
       "gender": "female",
       "role": "staff",
-      "isActive": true,
+      "isActive": false,
       "password": "queen",
       "id": 3
     },
@@ -51,6 +51,19 @@
       "isActive": false,
       "password": "queen",
       "id": 4
+    },
+    {
+      "firstName": "ayuk",
+      "lastName": "parfait",
+      "username": "ayukparfait",
+      "phone": 758548694,
+      "email": "test@gmail.com",
+      "dob": "2000-11-23T23:00:00.000Z",
+      "gender": "male",
+      "role": "item.code",
+      "isActive": false,
+      "password": "lol",
+      "id": 5
     }
   ],
   "role": [
